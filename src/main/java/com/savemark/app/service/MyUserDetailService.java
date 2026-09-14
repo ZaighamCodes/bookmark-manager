@@ -1,12 +1,15 @@
 package com.savemark.app.service;
 
 import com.savemark.app.models.User;
+import com.savemark.app.models.UserPrincipal;
 import com.savemark.app.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MyUserDetailService implements UserDetailsService {
 
     @Autowired
@@ -19,6 +22,6 @@ public class MyUserDetailService implements UserDetailsService {
        {
            throw new UsernameNotFoundException("User 404");
        }
-        return null;
+        return new UserPrincipal(user);
     }
 }
