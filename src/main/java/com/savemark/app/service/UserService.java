@@ -22,6 +22,7 @@ public class UserService {
         User user=new User();
         user.setUsername(request.getUsername());
         user.setPassword(encoder.encode(request.getPassword()));
+        userRepo.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("message","User registered"));
     }
 }

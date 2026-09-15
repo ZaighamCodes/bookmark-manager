@@ -78,7 +78,7 @@ public class SecurityConfig{
                 "Accept"
         ));
 
-        // Required because you are using session-based authentication
+        // Required session-based authentication
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source =

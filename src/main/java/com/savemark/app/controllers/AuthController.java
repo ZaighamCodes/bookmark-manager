@@ -54,6 +54,7 @@ public class AuthController {
     {
         try
         {
+            System.out.println(request);
 //            lets authenticate our username and password
             Authentication authentication=authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(),request.getPassword()));
