@@ -17,6 +17,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,7 @@ import java.net.http.HttpResponse;
 import java.util.Map;
 
 @RestController
+@CrossOrigin
 public class AuthController {
 
     @Autowired
@@ -38,7 +40,7 @@ public class AuthController {
 
     //    for registering our new user
     @PostMapping("/register")
-    public User register(@RequestBody RegistrationRequest request)
+    public ResponseEntity<Map<String, String>> register(@RequestBody RegistrationRequest request)
     {
         System.out.println(request);
         return userService.registerUser(request);
