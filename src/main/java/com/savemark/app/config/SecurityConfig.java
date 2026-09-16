@@ -101,7 +101,7 @@ public class SecurityConfig{
                 ))
                 .csrf(customizer->customizer.disable())
                 .authorizeHttpRequests(req->req
-                        .requestMatchers("/register","/login").permitAll()
+                        .requestMatchers("/auth/*").permitAll()
                         .anyRequest().authenticated())
 //                .httpBasic(Customizer.withDefaults())
                 .httpBasic(httpBasic->httpBasic.disable())
@@ -110,7 +110,7 @@ public class SecurityConfig{
                         .sessionFixation(fixation->fixation.changeSessionId())
                 )
                 .logout(logout->logout
-                        .logoutUrl("/logout")
+                        .logoutUrl("/auth/logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID"));
 
