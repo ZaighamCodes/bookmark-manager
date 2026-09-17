@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Value;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -20,5 +21,6 @@ public class User {
     private String username;
     @Column(nullable = false)
     private String password;
-
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Bookmark> bookmarks;
 }
